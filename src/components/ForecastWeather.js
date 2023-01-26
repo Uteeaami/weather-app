@@ -1,37 +1,54 @@
-import {getDescription, getIcon} from '../utils/weatherCodes'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import WeatherCard from './WeatherCard';
 
+//Component to display the weather forecast (3 Day weather)
 const ForecastWeather = ({cities}) =>{
 
     const calculateMean = (maxTemp, minTemp) => {
-      return Math.round((((maxTemp+minTemp)/2)*10)/10)
+      let mean = ((maxTemp+minTemp)/2)
+      return mean.toFixed(1)
     }
-  
+    
+    //function to format the date from YYYY-MM-DD to DD.MM.
+    const formatDate = (date) => {
+      return new Intl.DateTimeFormat('default', {
+        day: '2-digit',
+        month: '2-digit'
+      }).format(new Date(date));
+    }
+
+    /**
+     * Extracts weather information from cities array (Days data differs from current weather data)
+     * daysToShow - determines how many days worth of information should be extracted
+     */
     const daysToShow = 2
+    
     const timeArray = cities.daily.time.slice(1, 1+daysToShow);
+    const formattedTimeArray = timeArray.map((time) => formatDate(time));
     const weathercodeArray = cities.daily.weathercode.slice(1, 1+daysToShow);
-    const temperature_2m_maxArray = cities.daily.temperature_2m_max.slice(1, 1+daysToShow);
-    const temperature_2m_minArray = cities.daily.temperature_2m_min.slice(1, 1+daysToShow);
-  
+    const maxTemperatureArray = cities.daily.temperature_2m_max.slice(1, 1+daysToShow);
+    const minTemperatureArray = cities.daily.temperature_2m_min.slice(1, 1+daysToShow);
+
     return (
-      <div>
-        <ul>
-          <li>{cities.current_weather.time.split('T')[0]}</li>
-          <li><FontAwesomeIcon icon={getIcon(cities.current_weather.weathercode)}></FontAwesomeIcon></li>
-          <li>{`${cities.current_weather.temperature}°C`}</li>
-          <li>{getDescription(cities.current_weather.weathercode)}</li>
-        </ul>
-        {timeArray.map((time, index) => {
+      <div className="row d-flex flex-wrap">
+        <div className="col-lg-4 col-sm-12">
+          <WeatherCard
+            time={formatDate(cities.current_weather.time)}
+            temperature={cities.current_weather.temperature}
+            weathercode={cities.current_weather.weathercode}
+          ></WeatherCard>
+        </div>
+        {formattedTimeArray.map((time, index) => {
           const weathercode = weathercodeArray[index]
-          const max = temperature_2m_maxArray[index]
-          const min = temperature_2m_minArray[index]
+          const max = maxTemperatureArray[index]
+          const min = minTemperatureArray[index]
           return (
-            <ul key={time}>
-              <li>{time}</li>
-              <li><FontAwesomeIcon icon={getIcon(weathercode)}></FontAwesomeIcon></li>
-              <li>{`${calculateMean(max, min)}°C`}</li>
-              <li>{getDescription(weathercode)}</li>
-            </ul>
+            <div key={index} className="col-lg-4 col-sm-12">
+              <WeatherCard
+                time={time}
+                temperature={calculateMean(max, min)}
+                weathercode={weathercode}
+              ></WeatherCard>
+            </div>
           )
         })}
       </div>

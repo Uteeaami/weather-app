@@ -3,6 +3,7 @@ import { faCloud, faBolt, faSun, faPooStorm, faCloudSun,
         faCloudShowersHeavy, faCloudRain, faCloudMeatball, 
         faCloudBolt, faPoo, faSmog, faCloudShowersWater} from '@fortawesome/free-solid-svg-icons'
 
+//Allows usage of icons in other components
 library.add(faCloud, faBolt,faSun,faPooStorm,faCloudSun,faCloudShowersHeavy,faCloudRain,faCloudMeatball,faCloudBolt,faPoo,faSmog, faCloudShowersWater)
 
 const weatherDescription = { 
@@ -12,28 +13,28 @@ const weatherDescription = {
     3: 'Overcast',
     45: 'Fog',
     48: 'Depositing rime fog',
-    51: 'Drizzle: Light intensity',
-    53: 'Drizzle: Moderate intensity',
-    55: 'Drizzle: Dense intensity',
-    56: 'Freezing Drizzle: Light intensity',
-    57: 'Freezing Drizzle: Dense intensity',
-    61: 'Rain: Slight intensity',
-    63: 'Rain: Moderate intensity',
-    65: 'Rain: Heavy intensity',
-    66: 'Freezing Rain: Light intensity',
-    67: 'Freezing Rain: Heavy intensity',
-    71: 'Snow fall: Slight intensity',
-    73: 'Snow fall: Moderate intensity',
-    75: 'Snow fall: Heavy intensity',
+    51: 'Drizzle',
+    53: 'Drizzle',
+    55: 'Drizzle',
+    56: 'Freezing Drizzle',
+    57: 'Freezing Drizzle',
+    61: 'Rain',
+    63: 'Rain',
+    65: 'Rain',
+    66: 'Freezing Rain',
+    67: 'Freezing Rain',
+    71: 'Snow fall',
+    73: 'Snow fall',
+    75: 'Snow fall',
     77: 'Snow grains',
-    80: 'Rain showers: Slight intensity',
-    81: 'Rain showers: Moderate intensity',
-    82: 'Rain showers: Violent intensity',
-    85: 'Snow showers: Slight intensity',
-    86: 'Snow showers: Heavy intensity',
-    95: 'Thunderstorm: Slight or moderate',
-    96: 'Thunderstorm with hail: Slight intensity',
-    99: 'Thunderstorm with hail: Heavy intensity'
+    80: 'Rain showers',
+    81: 'Rain showers',
+    82: 'Rain showers',
+    85: 'Snow showers',
+    86: 'Snow showers',
+    95: 'Thunderstorm',
+    96: 'Thunderstorm with hail',
+    99: 'Thunderstorm with hail'
   }
 
   const weatherIcon = {
@@ -54,9 +55,9 @@ const weatherDescription = {
     66: 'fa-solid fa-cloud-showers-heavy',
     67: 'fa-solid fa-cloud-showers-heavy',
     71: 'fa-solid fa-cloud-meatball',
-    73: 'fa-solid fa-cloud-meatbal',
-    75: 'fa-solid fa-cloud-meatbal',
-    77: 'fa-solid fa-cloud-meatbal',
+    73: 'fa-solid fa-cloud-meatball',
+    75: 'fa-solid fa-cloud-meatball',
+    77: 'fa-solid fa-cloud-meatball',
     80: 'fa-solid fa-cloud-showers-heavy',
     81: 'fa-solid fa-cloud-showers-heavy',
     82: 'fa-solid fa-cloud-showers-water',
@@ -67,11 +68,16 @@ const weatherDescription = {
     99: 'fa-solid fa-cloud-bolt'
   }
 
-  export function getIcon(weatherCode) {
+  const getIcon = (weatherCode) => {
     return weatherIcon[weatherCode]
   }
 
-  export function getDescription(weatherCode) {
+  const getDescription = (weatherCode) => {
     return weatherDescription[weatherCode]
+  }
+
+  export default {
+    getIcon: getIcon,
+    getDescription: getDescription
   }
 

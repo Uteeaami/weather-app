@@ -31,24 +31,16 @@ const App = () => {
   ]
 
   return (
-    <Router>
-    <div className='container'>
-    <Routes>
-      <Route path="/" element={<MainView cities={cities}></MainView>}/>
-      <Route path="/:name" element={<WeatherView cities={cities}></WeatherView>}/>
-    </Routes>
+    <div style={{backgroundColor: '#f2f2f2'}}>
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainView cities={cities}></MainView>}/>
+          <Route path="/:cityName" element={<WeatherView cities={cities}></WeatherView>}/>
+        </Routes>
+      </Router>
     </div>
-    </Router>
   );
 }
 
 export default App;
-
-
-//TODO:
-/**
- * 
- * 3.Tyylitys
- * 
- * 
- */

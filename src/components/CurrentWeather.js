@@ -1,14 +1,15 @@
-import {getDescription, getIcon} from '../utils/weatherCodes'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import WeatherInfo from './WeatherInfo'
 
-
+//Displays the current weather (1 Day weather)
 const CurrentWeather = ({cities}) =>{
-
     return(
       <div>
-        <FontAwesomeIcon icon={getIcon(cities.current_weather.weathercode)}></FontAwesomeIcon>
-        <p>{`${cities.current_weather.temperature}°C`}</p>
-        <p>{getDescription(cities.current_weather.weathercode)}</p>
+        <p style={{padding:'12px'}}></p>
+        <WeatherInfo
+          icon={cities.current_weather.weathercode}
+          temperature={cities.current_weather.temperature}
+          weathercode={cities.current_weather.weathercode}
+        ></WeatherInfo>
       </div>
     )
   }

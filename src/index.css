@@ -1,3 +1,49 @@
-.container{
+.header {
+  width: 100vw;
+  position: absolute;
+  margin-top: 250px;
+}
+
+.city-name {
   text-align: center;
+}
+  
+.weather-display {
+  text-align: center;
+  padding: 50px;
+  width: 550px; 
+}
+  
+.error-message{
+  text-align: center;
+}
+
+.showonebutton-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.backbutton-container{
+  display: flex;
+  justify-content: center;
+}
+
+.temperature{
+  font-size: x-large;
+  font-weight: 400;
+}
+
+.weathercode{
+  font-size: x-large;
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 768px){
+  .header {
+    margin-top: 0px;
+  }
+  .weather-display{
+    width: auto; 
+  }
 }
