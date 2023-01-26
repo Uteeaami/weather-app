@@ -2,7 +2,6 @@ import { useState, useEffect} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import {Button} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
@@ -40,13 +39,13 @@ const WeatherView = ({cities}) => {
     }
   
     return(
-      <div className='d-flex align-items-center justify-content-center' style={{height:'100vh'}}>
+      <div className='d-flex align-items-center justify-content-center forecast-container'>
         <div className='d-flex flex-column'>
           <div className='city-name'>
             <h1>{coordinates.name}</h1>
           </div>
           {error && (
-            <div className="error-message">
+            <div className='error-message'>
               <p>An error has occurred: {error}</p>
               <Button onClick={() => setError(null)}>Retry</Button>
             </div>

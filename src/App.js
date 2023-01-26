@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes, Route
 } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import MainView from './components/MainView'
 import WeatherView from './components/WeatherView'

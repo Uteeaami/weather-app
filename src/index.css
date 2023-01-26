@@ -7,7 +7,7 @@
 .city-name {
   text-align: center;
 }
-  
+
 .weather-display {
   text-align: center;
   padding: 50px;
@@ -39,11 +39,18 @@
   font-weight: 300;
 }
 
+.forecast-container{
+  height: 100vh;
+}
+
 @media only screen and (max-width: 768px){
   .header {
     margin-top: 0px;
   }
   .weather-display{
-    width: auto; 
+    width: auto;
+  }
+  .forecast-container{
+    height: auto;
   }
 }

@@ -29,8 +29,8 @@ const ForecastWeather = ({cities}) =>{
     const minTemperatureArray = cities.daily.temperature_2m_min.slice(1, 1+daysToShow);
 
     return (
-      <div className="row d-flex flex-wrap">
-        <div className="col-lg-4 col-sm-12">
+      <div className='row'>
+        <div className='col-lg-4'>
           <WeatherCard
             time={formatDate(cities.current_weather.time)}
             temperature={cities.current_weather.temperature}
@@ -42,7 +42,7 @@ const ForecastWeather = ({cities}) =>{
           const max = maxTemperatureArray[index]
           const min = minTemperatureArray[index]
           return (
-            <div key={index} className="col-lg-4 col-sm-12">
+            <div key={index} className='col-lg-4'>
               <WeatherCard
                 time={time}
                 temperature={calculateMean(max, min)}
